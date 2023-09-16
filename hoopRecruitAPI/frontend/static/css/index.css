@@ -1,0 +1,206 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #292d3e;
+  color: white;
+}
+
+/* text:'#fff',
+    mainBackground:"#292d3e",
+    darkerBackground:"#1c1e2b",
+    lightBlue:"#88ddff",
+    gray:"#9fa5c5",
+    purple:"#c490e6",
+    yellow:"#dcb165",
+    green:"#dcb165" */
+/* basketball color: #ff8501 */
+
+.spotify-button {
+  border: none;
+  outline: none;
+  background-color: #00da5a;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 5px;
+  transition: all ease 0.1s;
+  box-shadow: 0px 5px 0px 0px #77dca1;
+  /* width:171px; */
+}
+
+.spotify-button:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px #77dca1;
+}
+
+.strava-button {
+  border: none;
+  outline: none;
+  background-color: #fc4c02;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 5px;
+  transition: all ease 0.1s;
+  box-shadow: 0px 5px 0px 0px #ee7e4f;
+  /* width:171px; */
+}
+
+.strava-button:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px #ee7e4f;
+}
+
+.info {
+  background-color: #ff8501;
+  color: white;
+  position: relative;
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.basketball-rim-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 60%;
+  max-width: 70%;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.profile-img-container {
+  width: 214px;
+  height: 214px;
+  background: url("../images/i.png"), #1c1e2b 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 214px;
+}
+.team-position-number div {
+  height: 33px;
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+.stats-container {
+  width: 628px;
+  border-radius: 20px;
+  background: #1c1e2b;
+}
+.stats-name div {
+  color: #fff;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.stats div {
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.basic-player-info-label {
+  color: rgba(234, 234, 234, 0.728);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.basic-player-info-numbers {
+  color: white;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+}
+.videos-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.video {
+  aspect-ratio: 1/1.5;
+}
+.video__content {
+  align-self: end;
+  margin-top: 0.75rem;
+}
+.video__img {
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  object-fit: cover;
+  border-radius: 10px;
+  filter: brightness(80%);
+}
+.video__img:hover {
+  filter: brightness(100%);
+}
+.video:hover {
+  cursor: pointer;
+}
+.video__title {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: bold;
+}
+.stacked > * {
+  display: grid;
+  grid-row: 1/2;
+}
+.navbar-container {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+.navbar-controller {
+  height: 50px;
+  background-color: #1c1e2b;
+}
+.navbar-navigation {
+  height:60px;
+  background-color: #292d3e;
+}
+.navbar-links{
+  color:white;
+  text-decoration: none;
+}
+.navbar-links:hover{
+  color:white;
+  text-decoration: none;
+}
+.navigation-ul{
+  list-style-type: none;
+  color:white;
+  text-decoration: none;
+}
+.tab-link{
+  margin:40px;
+}
+.sign-out{
+  color:#fc4c02;
+}
