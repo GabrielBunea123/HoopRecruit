@@ -1,99 +1,66 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-import PersonIcon from '@mui/icons-material/Person';
-import LogoutIcon from '@mui/icons-material/Logout';
-import useAuth from '../hooks/useAuth';
+import MenuIcon from '@mui/icons-material/Menu';
+import NavDropdown from './NavDropdown';
+import { IconButton } from '@mui/material';
 
 const Navigation = () => {
 
-    const { logoutUser } = useAuth()
+    const togglerRef = useRef(null)
+    const [navToggled, setNavToggled] = useState(false)
+
+    const toggleNavbar = () => {
+        setNavToggled(!navToggled)
+    }
 
     return (
-        <nav className="navbar-container">
-            <div className='navbar-controller'>
-                <div className="container">
-                    {/* <button type="button">
+        <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary navbar-dark">
+            <div class="container">
+                <a class="fw-bold nav-link pe-2" href="/">HoopRecruit</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button> */}
-                    <div className="d-flex justify-content-between">
-                        <a className="p-2 navbar-links" href="/">
-                            <div className='fw-bold pt-1'>HoopRecruit</div>
-                        </a>
-                        <div className="p-2">
-                            <TextField
-                                variant="outlined"
-                                placeholder="Search"
-                                fullWidth
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <SearchIcon />
-                                        </InputAdornment>
-                                    ),
-                                    style: { backgroundColor: 'white', borderRadius: 20, width: 250, height: 30, marginTop: 2, fontSize: 13 },
-                                }}
-                            />
-                        </div>
-                        <div className="d-flex p-2">
-                            <a href="#" className="p-1 px-3 navbar-links">
-                                <i class="fa-solid fa-bell"></i>
-                            </a>
-                            <a href="#" className="p-1 px-3 navbar-links">
-                                <i class="fa-solid fa-gear"></i>
-                            </a>
-                            {/* <a href="/profile" className="p-1 px-3 navbar-links">
-                                <i class="fa-solid fa-user"></i>
-                            </a> */}
-                            <div class="dropdown">
-                                <a class="navbar-links p-1 px-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-user"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item py-2" href="#">
-                                            <div className="d-flex">
-                                                <DashboardIcon/>
-                                                <div className="px-4">Dashboard</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item py-2" href="#">
-                                            <div className="d-flex">
-                                                <SignalCellularAltIcon/>
-                                                <div className="px-4">Analytics</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item py-2" href="/profile">
-                                            <div className="d-flex">
-                                                <PersonIcon/>
-                                                <div className="px-4">Profile</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li onClick={logoutUser}>
-                                        <a class="dropdown-item py-2 sign-out" href="#">
-                                            <div className="d-flex">
-                                                <LogoutIcon/>
-                                                <div className="px-4">Sign out</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="ms-auto my-1 search-bar">
+                        <TextField
+                            variant="outlined"
+                            placeholder="Search"
+                            fullWidth
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon />
+                                    </InputAdornment>
+                                ),
+                                style: { backgroundColor: 'white', borderRadius: 20, width: "100%", height: 30, marginTop: 2, fontSize: 13 },
+                            }}
+                        />
                     </div>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropstart">
+                            <NavDropdown />
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex" aria-current="page" href="#">
+                                <i class="fa-solid fa-bell p-1 pe-2"></i>
+                                <div className="a-label ps-2" style={{ fontWeight: 600 }}>Notifications</div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex" href="#">
+                                <i class="fa-solid fa-gear p-1 pe-2"></i>
+                                <div className="a-label ps-2" style={{ fontWeight: 600 }}>Settings</div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                {/* </div> */}
             </div>
         </nav>
     )
 }
+
+
 
 export default Navigation

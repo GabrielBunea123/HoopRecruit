@@ -1,7 +1,27 @@
 import React, { useState } from 'react'
-import { Button } from '@mui/material'
+import { Button, Chip } from '@mui/material'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import DoneIcon from '@mui/icons-material/Done';
+
+const videos = [
+    { cover: '../../static/images/0.webp', description: "The famous Jerry West NBA logo" },
+    { cover: '../../static/images/1.webp', description: "LeBron James winning his first title in Miami" },
+    { cover: '../../static/images/2.webp', description: "The moment Kobe and LeBron played against each other in the AllStar Game" },
+    { cover: '../../static/images/3.webp', description: "Just a Sixer dunkin'" },
+    { cover: '../../static/images/4.webp', description: "Derrick Rose winning the MVP trophy, being the youngest to ever do it" },
+    { cover: '../../static/images/5.webp', description: "One of the greatest shots in basketball history" },
+]
+
+const skills = [
+    'Mid Range',
+    '3 Pointers',
+    'Defense',
+    'Pull-up jumpshot',
+    'Layup package',
+    'Clutch',
+    'High IQ',
+    'Good Passing'
+]
 
 const Profile = () => {
 
@@ -9,27 +29,31 @@ const Profile = () => {
 
     return (
         <div className='container'>
-            <div className="d-flex flex-wrap justify-content-between pt-5">
-                <div className="profile-img-container"></div>
-                <div className="team-position-number py-3">
-                    <h4 className="p-3 pt-4 pb-2 fw-bold text-light">Kawhi Leonard</h4>
-                    <div className="d-flex justify-content-around py-3">
-                        <p className="mx-3">LA Clippers</p>
-                        <p className="mx-3">Small Forward</p>
-                        <p className="mx-3">#2</p>
+            <div className="profile-header">
+                <div className="img-stats">
+                    <div className="d-flex justify-content-center">
+                        <div className="profile-img-container"></div>
                     </div>
-                    <div className="py-4 my-1">
-                        <Button
-                            onClick={() => { setTargeted(!targeted) }}
-                            startIcon={targeted ? <DoneIcon /> : <TrackChangesIcon />}
-                            variant={targeted ? 'contained' : 'outlined'} color="primary"
-                            style={{ backgroundColor: targeted && '#ff8501', color: targeted ? 'white' : '#ff8501', borderColor: !targeted && '#ff8501' }}
-                            className="mx-3">
-                            {targeted ? 'Targeted' : 'Target'}
-                        </Button>
+                    <div className="team-position-number">
+                        <h4 className="pt-4 fw-bold text-light">Kawhi Leonard</h4>
+                        <div className="tpn py-3">
+                            <p>LA Clippers</p>
+                            <p>Small Forward</p>
+                            <p>#2</p>
+                        </div>
+                        <div className="py-4 my-1">
+                            <Button
+                                onClick={() => { setTargeted(!targeted) }}
+                                startIcon={targeted ? <DoneIcon /> : <TrackChangesIcon />}
+                                variant={targeted ? 'contained' : 'outlined'} color="primary"
+                                style={{ backgroundColor: targeted && '#ff8501', color: targeted ? 'white' : '#ff8501', borderColor: !targeted && '#ff8501' }}
+                            >
+                                {targeted ? 'Targeted' : 'Target'}
+                            </Button>
+                        </div>
                     </div>
                 </div>
-                <div className="stats-container align-self-center my-3">
+                <div className="stats-container align-self-center">
                     <div className="stats-name d-flex justify-content-around pt-5 pb-4">
                         <div>PPG</div>
                         <div>REB</div>
@@ -45,43 +69,81 @@ const Profile = () => {
                 </div>
             </div>
 
-            {/* <div className="d-flex justify-content-between p-5">
-                <div className="text-center">
-                    <div className="basic-player-info-label">Height</div>
-                    <div className="basic-player-info-numbers pt-2">2.01m</div>
-                    <hr></hr>
-                    <div className="basic-player-info-label">Weight</div>
-                    <div className="basic-player-info-numbers pt-2">102kg</div>
-                </div>
-                <div className="text-center">
-                    <div className="basic-player-info-label">Country</div>
-                    <div className="basic-player-info-numbers pt-2">USA</div>
-                    <hr></hr>
-                    <div className="basic-player-info-label">Education</div>
-                    <div className="basic-player-info-numbers pt-2">San Diego State</div>
-                </div>
-                <div className="text-center">
-                    <div className="basic-player-info-label">Birthdate</div>
-                    <div className="basic-player-info-numbers pt-2">June 29, 1991</div>
-                    <hr></hr>
-                    <div className="basic-player-info-label">Experience</div>
-                    <div className="basic-player-info-numbers pt-2">11 years</div>
-                </div>
-            </div> */}
-            <h5 className="fw-bold px-2 pt-5 pb-2 text-light">Highlights</h5>
-            <div className="videos-grid py-4 px-2">
-                {[0, 1, 2, 3, 4, 5].map((item, index) => (
-                    <div className="video stacked">
-                        <img src={`../../static/images/${index}.webp`} alt="" class="video__img"></img>
-                        <div class="video__content">
-                            <h2 class="video__title">Lorem, ipsum dolor.</h2>
+            <div className="profile-card">
+                <p className="pb-3">Biography</p>
+                <div className="biography__content">
+                    <div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">TEAM:</div>
+                            <div className="ps-3">LA CLIPPERS</div>
+                        </div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">POSITION:</div>
+                            <div className="ps-3">Small Forward</div>
+                        </div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">HT/WT:</div>
+                            <div className="ps-3">6' 7", 225 lbs</div>
                         </div>
                     </div>
+                    <div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">BIRTHDATE:</div>
+                            <div className="ps-3">6/29/1991 (32)</div>
+                        </div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">EDUCATION:</div>
+                            <div className="ps-3">San Diego St</div>
+                        </div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">STATUS:</div>
+                            <div className="ps-3">Game Time Decision</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">EXPERIENCE:</div>
+                            <div className="ps-3">10th Season</div>
+                        </div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">BIRTHPLACE:</div>
+                            <div className="ps-3">Los Angeles, CA</div>
+                        </div>
+                        <div className="d-flex py-2">
+                            <div className="biography__label">DRAFT INFO:</div>
+                            <div className="ps-3">2011: Rd 1, Pk 15 (IND)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 className="fw-bold px-2 pt-5 pb-2 text-light">Highlights</h5>
+            <div className="videos-grid py-4 px-2">
+                {videos.map((item, index) => (
+                    <a className="video stacked" href={'/highlight/' + index}>
+                        <img src={item.cover} alt="" class="video__img"></img>
+                        <div class="video__content">
+                            <h2 class="video__title">{item?.description?.length > 40 ? item?.description?.slice(0, 40) + '...' : item?.description}</h2>
+                        </div>
+                    </a>
                 ))}
             </div>
+
+            <div className="profile-card">
+                <p className="pb-3">Skills</p>
+                <div className="d-flex flex-wrap pt-0">
+                    {skills.length > 0 ? skills?.map((item => (
+                        <Chip className="my-2 me-3" label={item} sx={{color:'white', backgroundColor:'#2c2e3b', fontWeight:600}} />
+                    )))
+                        :
+                        <Chip className="me-2 fw-bold text-secondary" label="No skills added" />
+                    }
+                </div>
+            </div>
+
+
 
         </div>
     )
 }
-
 export default Profile

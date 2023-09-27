@@ -32,13 +32,13 @@ const Home = () => {
             </video> */}
 
             <div className="text-center">
-                <video
+                {/* <video
                     style={{borderRadius:20}}
                     controls
                     width="85%"
                     // height=""
                     src={`../../static/videos/Ja.mp4`}
-                ></video>
+                ></video> */}
             </div>
         </div>
     )

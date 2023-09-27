@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,7 +9,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #292d3e;
   color: white;
+  font-size: 1rem; /* 1rem is equal to the base font size */
 }
+
+html {
+  font-size: 16px; /* Define a base font size */
+}
+
+h1 {
+  font-size: 2rem; /* 2 times the base font size */
+}
+
+p {
+  font-size: 0.875rem; /* 0.875 times the base font size */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Decrease base font size for smaller screens */
+  }
+}
+
+/* 1024, 768, 576 */
 
 /* text:'#fff',
     mainBackground:"#292d3e",
@@ -18,6 +41,8 @@ body {
     yellow:"#dcb165",
     green:"#dcb165" */
 /* basketball color: #ff8501 */
+
+/* auth */
 
 .spotify-button {
   border: none;
@@ -62,7 +87,11 @@ body {
   color: white;
   position: relative;
 }
-
+@media only screen and (max-width: 768px) {
+  .info {
+    display: none;
+  }
+}
 .login-options {
   display: flex;
   flex-direction: column;
@@ -86,6 +115,14 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* profile */
+.profile-header{
+  display:flex;
+  justify-content: space-between;
+  padding-top:70px;
+  flex-wrap: wrap;
+}
 .profile-img-container {
   width: 214px;
   height: 214px;
@@ -93,22 +130,90 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 214px;
+  align-items: center;
 }
-.team-position-number div {
+.team-position-number{
+  padding-left:40px;
+  padding-top:15px;
+}
+.img-stats{
+  display:flex;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+.tpn {
+  display: flex;
+  justify-content: space-between;
   height: 33px;
   color: #fff;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding-top: 40px;
+  padding-top: 50px;
   padding-bottom: 30px;
+}
+.tpn p{
+  margin-right: 20px;
 }
 .stats-container {
   width: 628px;
   border-radius: 20px;
   background: #1c1e2b;
+  margin-top:30px;
+  margin-bottom:30px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
+@media screen and (max-width: 1400px) {
+  .stats-container{
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .stats-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .img-stats{
+    flex-wrap:nowrap;
+  }
+  .tpn p{
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .profile-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .team-position-number{
+    padding-left:0;
+  }
+  .tpn{
+    flex-wrap: wrap;
+    height:auto
+  }
+  .tpn p{
+    margin-right: 0px;
+    margin-left:15px;
+  }
+  .img-stats{
+    display: block;
+    text-align: center;
+    align-items: center;
+  }
+  .stats-container{
+    margin:5px;
+    margin-top:20px;
+  }
+}
+
 .stats-name div {
   color: #fff;
   text-align: center;
@@ -123,6 +228,20 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+@media screen and (max-width: 767px) {
+  .stats div {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .stats-name div {
+    font-size: .8rem;
+  }
+  .stats div {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
 }
 .basic-player-info-label {
   color: rgba(234, 234, 234, 0.728);
@@ -140,11 +259,12 @@ body {
 }
 .videos-grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 .video {
-  aspect-ratio: 1/1.5;
+  aspect-ratio: 16/9;
+  text-decoration: none;
 }
 .video__content {
   align-self: end;
@@ -152,7 +272,7 @@ body {
 }
 .video__img {
   width: 100%;
-  aspect-ratio: 1 / 1.25;
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 10px;
   filter: brightness(80%);
@@ -164,43 +284,86 @@ body {
   cursor: pointer;
 }
 .video__title {
-  font-size: 0.9rem;
+  font-size:1rem;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
+  line-height: 20spx;
 }
 .stacked > * {
   display: grid;
   grid-row: 1/2;
 }
-.navbar-container {
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-}
-.navbar-controller {
-  height: 50px;
+/* navbar */
+
+.navbar {
   background-color: #1c1e2b;
 }
-.navbar-navigation {
-  height:60px;
-  background-color: #292d3e;
+.a-label {
+  display: none;
 }
-.navbar-links{
-  color:white;
-  text-decoration: none;
+@media screen and (max-width: 992px) {
+  .search-bar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+  .a-label {
+    display: block;
+  }
 }
-.navbar-links:hover{
-  color:white;
-  text-decoration: none;
+.dropdown-menu {
+  right: 0;
+  left: auto;
 }
-.navigation-ul{
-  list-style-type: none;
-  color:white;
-  text-decoration: none;
+.tab-link {
+  margin: 40px;
 }
-.tab-link{
-  margin:40px;
+.sign-out {
+  color: #fc4c02;
 }
-.sign-out{
-  color:#fc4c02;
+.highlight{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+}
+.highlight__video{
+  /* width:100%; */
+  background-color: #00da5a;
+  height:40rem;
+
+}
+.highlight__description{
+  background-color: #fc4c02;
+}
+
+.profile-card{
+  background-color: #1c1e2b;
+  margin-top:50px;
+  padding:30px;
+  border-radius: 20px;
+  /* margin:10px; */
+  margin-top:50px;
+}
+.profile-card p{
+  border-bottom: 1px solid #ff8501;
+}
+.biography__content{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.biography__label{
+  color:#b2b2b2;
+}
+
+@media screen and (max-width:767px) {
+  .biography__content{
+    display: block;
+  }
+}
+.description{
+  line-height: 30px;
+  /* color:#f0f8ff */
+  color:white
 }
